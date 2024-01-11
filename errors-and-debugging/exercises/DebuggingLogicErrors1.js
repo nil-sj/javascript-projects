@@ -1,6 +1,8 @@
 // Run this sample code as-is and examine the output. 
 // Should the shuttle have launched? 
+// NO IT SHOULD NOT HAVE DUE TO LOW FUEL LEVEL
 // Did it?
+// IT DID LAUNCH DUE TO A LOGICAL ERROR
 // Do not worry about fixing the code yet, we will do that in the next series of exercises.
 
 let launchReady = false;
@@ -16,7 +18,7 @@ if (fuelLevel >= 20000) {
    launchReady = false;
 }
 
-if (crewStatus && computerStatus === 'green'){
+if (crewStatus && computerStatus === 'green') {
    console.log('Crew & computer cleared.');
    launchReady = true;
 } else {

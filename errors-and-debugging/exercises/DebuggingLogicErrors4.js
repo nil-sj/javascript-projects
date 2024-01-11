@@ -2,7 +2,9 @@
 // Run the code and examine the output. 
 
 // Given the values for fuelLevel, crewStatus and computerStatus, should launchReady be true or false?
+//THEY ARE INDEPENDENTLY BEING CHECKED AND CONTROLLING THE LAUNCHREADY VALUE SPEARATELY.
 // Is the program behaving as expected?
+//THERE IS A LOGICAL ERROR TO DETERMINE THE LAUNCHREADY STATUS IN TWO DIFFERENT CONFLICTING AREAS IN THE CODE.
 
 let launchReady = false;
 let fuelLevel = 17000;
