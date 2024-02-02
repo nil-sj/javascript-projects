@@ -47,7 +47,7 @@ function generateUniqueID(startID, endID, IDarray) {
    do {
       uniqueID = generateRandomInt(startID, endID);
    } while (IDarray.indexOf(uniqueID) !== -1)
-   listOfIDs.push(uniqueID);
+   IDarray.push(uniqueID);
    return uniqueID;
 }
 
