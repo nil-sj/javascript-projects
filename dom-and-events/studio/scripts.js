@@ -1,7 +1,7 @@
 // Write your JavaScript code here.
 // Remember to pay attention to page loading!
-function init () {
-    
+function init() {
+
     const mySpace = document.getElementById('shuttleBackground');
     const myShuttle = document.getElementById('rocket');
 
@@ -17,12 +17,21 @@ function init () {
     const statusMessageElem = document.getElementById('flightStatus');
     const shuttleHeightElem = document.getElementById('spaceShuttleHeight');
 
+    // calculations for bonus mission part 1
+    const mySpaceHeight = mySpace.offsetHeight;
+    const mySpaceWidth = mySpace.offsetWidth;
+    const myShuttleHeight = myShuttle.offsetHeight;
+    const myShuttleWidth = myShuttle.offsetWidth;
+    const availableSpaceHeight = mySpaceHeight - myShuttleHeight;
+    const availableSpaceWidth = mySpaceWidth - myShuttleWidth;
+
+    // all my utility functions
     function updateScreenElem(elem, value) {
         elem.innerHTML = value;
     }
 
     function updateElemStyle(elem, prop, value, unit = undefined) {
-        elem.style[prop] = unit ? String(value+unit) : String(value);
+        elem.style[prop] = unit ? String(value + unit) : String(value);
     }
 
     function getRocketPosition(direction) {
@@ -51,13 +60,14 @@ function init () {
         myShuttle.style.left = '100px';
     }
 
+    // execution starts here:
     setInitialRocketPos();
 
     takeOffBtn.addEventListener('click', event => {
         let confirmation = window.confirm("Confirm that the shuttle is ready for takeoff.");
         if (confirmation) {
             updateScreenElem(statusMessageElem, "Shuttle in flight.");
-            updateElemStyle(mySpace,'backgroundColor','blue');
+            updateElemStyle(mySpace, 'backgroundColor', 'blue');
             setRocketHeight(getRocketHeight() + 10000);
             setRocketPosition('Y', getRocketPosition('Y') + 10);
         }
@@ -67,8 +77,8 @@ function init () {
         window.alert('The shuttle is landing. Landing gear engaged.');
         updateScreenElem(statusMessageElem, "The shuttle has landed.");
         setRocketHeight(0);
-        updateElemStyle(mySpace,'backgroundColor','green');
-        //additional step: not mentioned in spec ...
+        updateElemStyle(mySpace, 'backgroundColor', 'green');
+        //Bonus Part: Point #2
         setRocketPosition('Y', 0);
     });
 
@@ -76,30 +86,47 @@ function init () {
         let confirmation = window.confirm("Confirm that you want to abort the mission.");
         if (confirmation) {
             updateScreenElem(statusMessageElem, "Mission aborted.");
-            updateElemStyle(mySpace,'backgroundColor','green');
+            updateElemStyle(mySpace, 'backgroundColor', 'green');
             setRocketHeight(0);
-            //additional step: not mentioned in spec ...
+            //Bonus Part: Point #2
             setRocketPosition('Y', 0);
         }
     });
 
     upBtn.addEventListener('click', event => {
-        setRocketPosition('Y', getRocketPosition('Y') + 10);
-        setRocketHeight(getRocketHeight() + 10000);
+        if (getRocketPosition('Y') + 10 < availableSpaceHeight) {
+            setRocketPosition('Y', getRocketPosition('Y') + 10);
+            setRocketHeight(getRocketHeight() + 10000);
+        } else {
+            window.alert("The Rocket can not go up further!");
+        }
     });
 
     downBtn.addEventListener('click', event => {
-        setRocketPosition('Y', getRocketPosition('Y') - 10);
-        setRocketHeight(getRocketHeight() - 10000);
+        if (getRocketPosition('Y') - 10 > 0) {
+            setRocketPosition('Y', getRocketPosition('Y') - 10);
+            setRocketHeight(getRocketHeight() - 10000);
+        } else {
+            window.alert("The Rocket can not go down further!");
+        }
     });
 
     rightBtn.addEventListener('click', event => {
-        setRocketPosition('X', getRocketPosition('X') + 10);
+        if (getRocketPosition('X') + 10 < availableSpaceWidth) {
+            setRocketPosition('X', getRocketPosition('X') + 10);
+        } else {
+            window.alert("The Rocket can not go further rightward!");
+        }
     });
 
     leftBtn.addEventListener('click', event => {
-        setRocketPosition('X', getRocketPosition('X') - 10);
+        if (getRocketPosition('X') - 10 > 0) {
+            setRocketPosition('X', getRocketPosition('X') - 10);
+        } else {
+            window.alert("The Rocket can not go further leftward!");
+        }
     });
+
 }
 
 window.addEventListener("load", init);
