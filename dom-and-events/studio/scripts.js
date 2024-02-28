@@ -94,7 +94,7 @@ function init() {
     });
 
     upBtn.addEventListener('click', event => {
-        if (getRocketPosition('Y') + 10 < availableSpaceHeight) {
+        if (getRocketPosition('Y') + 10 <= availableSpaceHeight) {
             setRocketPosition('Y', getRocketPosition('Y') + 10);
             setRocketHeight(getRocketHeight() + 10000);
         } else {
@@ -103,7 +103,7 @@ function init() {
     });
 
     downBtn.addEventListener('click', event => {
-        if (getRocketPosition('Y') - 10 > 0) {
+        if (getRocketPosition('Y') - 10 >= 0) {
             setRocketPosition('Y', getRocketPosition('Y') - 10);
             setRocketHeight(getRocketHeight() - 10000);
         } else {
@@ -112,7 +112,7 @@ function init() {
     });
 
     rightBtn.addEventListener('click', event => {
-        if (getRocketPosition('X') + 10 < availableSpaceWidth) {
+        if (getRocketPosition('X') + 10 <= availableSpaceWidth) {
             setRocketPosition('X', getRocketPosition('X') + 10);
         } else {
             window.alert("The Rocket can not go further rightward!");
@@ -120,7 +120,7 @@ function init() {
     });
 
     leftBtn.addEventListener('click', event => {
-        if (getRocketPosition('X') - 10 > 0) {
+        if (getRocketPosition('X') - 10 >= 0) {
             setRocketPosition('X', getRocketPosition('X') - 10);
         } else {
             window.alert("The Rocket can not go further leftward!");
