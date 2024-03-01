@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Rocket Simulation</title>
-    <style>
-      label { display: block; margin-bottom: 7px;}
-    </style>
-  </head>
-  <body>
-    <!-- TODO: add form here -->
-    
 
-    <p>WARNING: This ONLY works in <b>replit</b> if this "result" page is opened in its own window. Click the icon that shows a box with an arrow coming out of it.
-    </p>
-  </body>
-  
+<head>
+  <meta charset="utf-8">
+  <script src="script.js" type="text/javascript"></script>
+  <title>Rocket Simulation</title>
+  <style>
+    label {
+      display: block;
+      margin-bottom: 7px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- TODO: add form here -->
+  <form id="simulation-form" method="POST">
+    <label>Test Name <input type="text" name="testName" /></label>
+    <label>Test Date <input type="date" name="testDate" /></label>
+    <label>Rocket Type
+      <select name="rocketType">
+        <option value="Brant">Brant</option>
+        <option value="Lynx">Lynx</option>
+        <option value="Orion">Orion</option>
+        <option value="Terrier">Terrier</option>
+      </select>
+    </label>
+    <label>Number of Rocket Boosters<input type="number" name="boosterCount" max="10" /></label>
+    Wind Rating:
+    <label>No Wind<input type="radio" name="windRating" value="0" /></label>
+    <label>Mild<input type="radio" name="windRating" value="10" /></label>
+    <label>Strong<input type="radio" name="windRating" value="20" /></label>
+    <label>Use production grade servers<input type="checkbox" name="productionServers" /></label>
+    <button>Run Simulation</button>
+  </form>
+
+  <p>WARNING: This ONLY works in <b>replit</b> if this "result" page is opened in its own window. Click the icon that
+    shows a box with an arrow coming out of it.
+  </p>
+</body>
+
 </html>

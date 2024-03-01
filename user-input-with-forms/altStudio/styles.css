@@ -1,0 +1,94 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: black;
+}
+
+.form-wrapper {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+form {
+    display: grid;
+    gap: 1.5rem;
+    width: min(36rem, 100%);
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0.5rem auto 0 auto;
+}
+
+.form-title {
+    font-size: 2em;
+    font-weight: 600;
+}
+
+form-group {
+    display: grid;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+
+.input, .textarea {
+    -webkit-appearance: none;
+    width: 100%;
+    min-height: calc(0.9em + (0.8em * 2) + 0.6em);
+    padding: 0.8em;
+    font-size: 0.9rem;
+    font-family: "Open Sans", sans-serif;
+    outline: none;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.input, .textarea:focus {
+    background: #ffffff;
+}
+
+.input::placeholder, .textarea::placeholder {
+    color: #bbbbbb;
+}
+
+.textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.submit-button {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 10px 16px;
+    color: #ffffff;
+    background: rgb(50, 200, 30);
+    border: 2px solid rgb(50, 200, 30);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    max-width: 120px;
+    justify-self: right;
+}
+
+.submit-button:hover {
+    background: rgb(35, 35, 180);
+    border: 2px solid rgb(35, 35, 180);
+}
+
+.submit-button:active {
+    background: var(--text-dark-color);
+    border: 2px solid var(--text-dark-color);
+}
